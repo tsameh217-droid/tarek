@@ -3,50 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>for basbosa❤️</title>
-    <link rel="stylesheet" href="bm.css">
+    <title>basbosa</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@700&display=swap');
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background: linear-gradient(135deg, #ff9ac7 0%, #fad0c4 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .box {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #ff6b6b;
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            position: relative;
+            height: 60px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 18px;
+            font-family: 'Tajawal', sans-serif;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .yes-btn {
+            background: #e0079b;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #ee5a5a;
+            transform: scale(1.1);
+        }
+
+        .no-btn {
+            background: #f80303;
+            color: rgb(255, 255, 255);
+        }
+
+        .no-btn:hover {
+            background: #a0a0a0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .celebration {
+            text-align: center;
+        }
+
+        .celebration h1 {
+            font-size: 40px;
+            color: #ff6b6b;
+            animation: pulse 1s infinite;
+        }
+
+        .heart {
+            font-size: 100px;
+            animation: beat 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes beat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
 </head>
 <body>
-    <!-- صفحة كلمة السر -->
-    <div id="passwordPage" class="page">
-        <div class="container">
-            <h1>🔒 password</h1>
-            <p>enter el pasword ya sob7y</p>
-            <input type="password" id="passwordInput" placeholder="password">
-            <button onclick="checkPassword()">enter❤️</button>
+    <!-- الصفحة الأولى -->
+    <div class="box" id="questionPage">
+        <h1>تتصالح ياعم الادمن؟❤️</h1>
+        <div class="buttons">
+            <button class="no-btn" onmouseover="moveButton()" onclick="moveButton()">لا</button>
+            <button class="yes-btn" onclick="showCelebration()">نعم</button>
         </div>
     </div>
 
-    <!-- صفحة الاعتذار -->
-    <div id="apologyPage" class="page hidden">
-        <div class="container">
-            <div class="heart-animation">💖</div>
-            
-            <div class="photo-container">
-                <img id="couplePhoto" src="WhatsApp Image 2026-05-13 at 3.36.48 PM.jpg" alt="صورة لينا">
-            </div>
-
-            <h1> for basbosty</h1>
-            
-            <div class="apology-text">
-                <p>بص ياعم الادمن انا جاي اقولك متزعلش من طارق اه الي حصل واو بس مش معني كده دي النهايه ومش معني كده اني بتفه من الي حصل بس مش عاوزه يكون النهايه وبجد انا بحبك يا بسمله ولو بصيت للواو الي حصل هتلاقيه بسبب انه طارق وبسمله مش هيكملوا كلام م عشان احنا مش مناسبين وزي ما قولتلك في حاجات بعملها دلوقتي عشان محسش اني مش مهتم ببسمله عشان مش قدامي اختيار اني اعمل غيره دلوقتي واخر حاجه والله لو رجع بيا الزمن تاني هختار اني احبك واعيد ده كله تاني</p>
-                <p>و انا واحشني بسمله لما كانت بتعمل ريبلاي علي الاستوريز وده كله وبحبك</p>
-                <p></p>
-                <p></p>
-            </div>
-
-            <div class="music-container">
-                <a href="https://youtu.be/VbqTmA2VOtI?si=uFV71xB8djzj_VYm" target="_blank">
-                    <button class="music-btn">🎵 الاغنيه الي بعبر بيها كل مره</button>
-                </a>
-            </div>
-
-            <div class="final-message">
-                <h2>اتصالح بقي ياعم صبحي</h2>
-            </div>
-        </div>
+    <!-- صفحة الاحتفال -->
+    <div class="box hidden" id="celebrationPage">
+        <div class="heart">❤️</div>
+        <h1>قال مش بعرف اصالحك قال! 🎉</h1>
+        <p style="font-size: 20px; color: #666;">متزعليش يا بسابيسو انا بحبك انا هفضل كل مره اجيلك ❤️</p>
     </div>
 
-    <script src="bm.js"></script>
+    <script>
+        function moveButton() {
+            const noBtn = document.querySelector('.no-btn');
+            const randomX = Math.random() * 200 - 100;
+            const randomY = Math.random() * 200 - 100;
+            noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        }
+
+        function showCelebration() {
+            document.getElementById('questionPage').classList.add('hidden');
+            document.getElementById('celebrationPage').classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
